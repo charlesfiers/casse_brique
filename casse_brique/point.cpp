@@ -36,16 +36,13 @@ carttopolaire();
 point::~point(){
 cout << "destructeur" << endl;
 }
-//void point::initialise()
-//{
-//cout << endl << "Position en X : ";
-//cin >> x;
-//cout << endl << "Position en Y : ";
-//cin >> y;
-//cout << endl;
-//carttopolaire();
 
-//}
+void point::init(point p1)
+{
+    x = p1.getx();
+    y = p1.gety();
+}
+
 void point::affiche(){
 cout << "(" << x << ", " << y << ")";
 cout << "(" << rho << ", " << theta << ")";
