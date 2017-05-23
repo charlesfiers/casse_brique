@@ -55,7 +55,7 @@ void init_window()
 int main(){
     init_window();
     point* p1 = new point(10,10);
-    point* p2 = new point(20,20);
+    point* p2 = new point(60,60);
     rectangle* r1 = new rectangle(*p1,*p2);
     do{
         clear_bitmap(buf);
