@@ -14,6 +14,8 @@
 #include <allegro.h>
 
 #include "rectangle.h"
+#include "raquettes.h"
+#include "balle.h"
 
 BITMAP* buf;
 
@@ -30,12 +32,8 @@ void init_window()
 
 
 
-    if(set_gfx_mode(GFX_AUTODETECT_WINDOWED, 640 , 480, 0, 0)!= 0)
+    if(set_gfx_mode(GFX_AUTODETECT_WINDOWED, 600 , 700, 0, 0)!= 0)
     {
-        /* Comme vous avez bien suivi mes explications, vous savez que
-        allegro_message s?utilise
-        uniquement en mode texte, c?est pour cela que l?on utilise GFX_TEXT, pour ?re
-        sur de repasser en mode texte? */
         set_gfx_mode(GFX_TEXT, 0, 0, 0, 0); /* voil?la commande pour le mode texte */
         allegro_message("Impossible d?initialiser le mode vid? !\n%s\n", allegro_error);
         return; //et on oublie pas de quitter?
@@ -54,13 +52,28 @@ void init_window()
 
 int main(){
     init_window();
-    point* p1 = new point(10,10);
-    point* p2 = new point(60,60);
-    rectangle* r1 = new rectangle(*p1,*p2);
+    point* p1 = new point(250,20);
+    point* p2 = new point(350,30);
+    
+    point* p3 = new point(250,670);
+    point* p4 = new point(350,680);
+    
+    point* c = new point(300,660);
+    
+    raquettes* r1 = new raquettes(*p1,*p2);
+    raquettes* r2 = new raquettes(*p3,*p4);
+    
+    balle* b1 = new balle(*c,10);
+    
     do{
         clear_bitmap(buf);
         r1->affiche();
+        r2->affiche();
+        b1->affiche();
         blit(buf,screen,0,0,0,0,buf->w,buf->h);
+        r1->deplacement();
+        r2->deplacement();
+        
     }
     while(!key[KEY_ESC]);
     

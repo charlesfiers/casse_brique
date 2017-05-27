@@ -4,7 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>balle.h</itemPath>
       <itemPath>point.h</itemPath>
+      <itemPath>raquettes.h</itemPath>
       <itemPath>rectangle.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -14,8 +16,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>balle.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>point.cpp</itemPath>
+      <itemPath>raquettes.cpp</itemPath>
       <itemPath>rectangle.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -45,11 +49,19 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="balle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="balle.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="point.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="point.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="raquettes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="raquettes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="rectangle.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -76,11 +88,19 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="balle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="balle.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="point.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="point.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="raquettes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="raquettes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="rectangle.cpp" ex="false" tool="1" flavor2="0">
       </item>

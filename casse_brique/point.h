@@ -17,8 +17,7 @@
 class point {
 protected:
 float x,y;
-float rho,theta; // rho = sqrt(x²+y²) ;
-//tan(theta) = y/x --> theta = arctan(y/x)
+float rho,theta; 
 void majpol();
 void majcart();
 public:

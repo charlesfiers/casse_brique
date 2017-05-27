@@ -24,7 +24,7 @@ protected:
 
 public:
     rectangle(point, point);
-    ~rectangle();
+    virtual ~rectangle();
     void init(point, point);
     void init(rectangle);
     void collision(int, int);

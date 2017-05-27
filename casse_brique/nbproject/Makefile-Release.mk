@@ -35,8 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/balle.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/point.o \
+	${OBJECTDIR}/raquettes.o \
 	${OBJECTDIR}/rectangle.o
 
 
@@ -64,6 +66,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/casse_brique: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/casse_brique ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/balle.o: balle.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/balle.o balle.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -73,6 +80,11 @@ ${OBJECTDIR}/point.o: point.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/point.o point.cpp
+
+${OBJECTDIR}/raquettes.o: raquettes.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/raquettes.o raquettes.cpp
 
 ${OBJECTDIR}/rectangle.o: rectangle.cpp 
 	${MKDIR} -p ${OBJECTDIR}
