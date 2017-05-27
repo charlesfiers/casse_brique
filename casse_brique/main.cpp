@@ -16,8 +16,11 @@
 #include "rectangle.h"
 #include "raquettes.h"
 #include "balle.h"
+#include "../iostream"
 
 BITMAP* buf;
+
+using namespace std;
 
 void init_window()
 {
@@ -63,7 +66,21 @@ int main(){
     raquettes* r1 = new raquettes(*p1,*p2);
     raquettes* r2 = new raquettes(*p3,*p4);
     
-    balle* b1 = new balle(*c,10);
+    balle* b1 = new balle(*c,10,-30);
+    do{
+        clear_bitmap(buf);
+        r1->affiche();
+        r2->affiche();
+        b1->affiche();
+        r1->deplacement();
+        r2->deplacement();
+        point* p = new point(r2->getp1().getx()+50,r2->getp2().gety()-20);
+        b1->setcentre(*p);
+        textout_centre_ex(buf,font, "Cliquez pour commencer", 300, 350,makecol(255,255,255),makecol(0,0,0));
+        textout_centre_ex(buf,font, "ESC pour quitter", 300, 400,makecol(255,255,255),makecol(0,0,0));
+        blit(buf,screen,0,0,0,0,buf->w,buf->h);
+    }
+    while(!(mouse_b & 1) && !(key[KEY_ESC]));
     
     do{
         clear_bitmap(buf);
@@ -73,7 +90,13 @@ int main(){
         blit(buf,screen,0,0,0,0,buf->w,buf->h);
         r1->deplacement();
         r2->deplacement();
-        
+        for(int i=1; i<=5;i++){
+            b1->deplacement_balle();
+            if ((r1->collision(b1->getx(),b1->gety()-10)) || (r2->collision(b1->getx(),b1->gety()+10))) {
+                b1->majdir();
+            }
+            b1->collision_screen();
+        }
     }
     while(!key[KEY_ESC]);
     

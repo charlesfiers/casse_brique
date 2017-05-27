@@ -20,20 +20,22 @@ class balle
 {
 protected:
     point centre;
-    float rayon;
-    int dir;
+    float rayon,angle;
 public:
-    balle(point, float);
+    balle(point, float,float);
     ~balle();
     float getx();
     float gety();
     float getrayon();
-    int getdir();
+    float getangle();
     void setcentre(point);
     void setrayon(float);
-    void setdir(int);
+    void setangle(float);
     virtual void affiche();
     void deplacement_balle();
+    void majdir();
+    void majdir2();
+    void collision_screen();
 };
 
 

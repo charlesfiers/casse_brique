@@ -15,13 +15,16 @@
 #include <allegro.h>
 #include <iostream>
 #include "point.h"
+#include "math.h"
+
 extern BITMAP* buf;
 using namespace std;
 
 extern BITMAP *screen;
 
-balle::balle(point pp1,float r):centre(pp1) {
+balle::balle(point pp1,float r,float ang):centre(pp1) {
     this->rayon = r;
+    this->angle = ang;
 }
 
 balle::~balle() {
@@ -29,7 +32,7 @@ balle::~balle() {
 
 void balle::affiche()
 {
-    circlefill(buf,centre.getx(),centre.gety(),rayon,makecol(255,255,255));
+    circlefill(buf,this->centre.getx(),this->centre.gety(),this->rayon,makecol(255,255,255));
 }
 
 float balle::getx(){
@@ -44,8 +47,8 @@ float balle::getrayon(){
     return this->rayon;
 }
 
-int balle::getdir(){
-    return this->dir;
+float balle::getangle(){
+    return this->angle;
 }
 
 void balle::setcentre(point pp1){
@@ -56,6 +59,34 @@ void balle::setrayon(float r){
     this->rayon = r;
 }
 
-void balle::setdir(int d){
-    this->dir = d;
+void balle::setangle(float a){
+    this->angle = a;
+}
+
+void balle::deplacement_balle(){
+    float pasx,pasy;
+    pasx = 0.1*cos(this->angle);
+    pasy = 0.1*(-sin(this->angle));
+    point* p = new point(this->getx()+pasx,this->gety()+pasy);
+    this->setcentre(*p);
+}
+
+void balle::collision_screen(){
+    if ((this->getx()>=590) || (this->getx()<=10)) {
+        this->majdir2();
+    }
+    if ((this->gety() <= 10) || (this->gety() >= 690)){
+        destroy_bitmap(buf);
+        set_gfx_mode(GFX_TEXT,0,0,0,0);
+        END_OF_MAIN();
+    }
+
+}
+
+void balle::majdir(){
+    this->angle = -(this->angle);
+}
+
+void balle::majdir2(){
+    this->angle = (this->angle)+30;
 }

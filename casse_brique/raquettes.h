@@ -23,6 +23,9 @@ public:
     raquettes(point,point);
     virtual ~raquettes();
     void deplacement();
+    bool collision(float,float);
+    point getp1();
+    point getp2();
 };
 
 
