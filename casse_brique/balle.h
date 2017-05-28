@@ -23,6 +23,7 @@ protected:
     float rayon,angle;
 public:
     balle(point, float,float);
+    balle();
     ~balle();
     float getx();
     float gety();
@@ -31,7 +32,7 @@ public:
     void setcentre(point);
     void setrayon(float);
     void setangle(float);
-    virtual void affiche();
+    virtual void affiche(int);
     void deplacement_balle();
     void majdir();
     void majdir2();

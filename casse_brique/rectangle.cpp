@@ -37,7 +37,7 @@ void rectangle::init(rectangle pr)
     init(pr.p1, pr.p2);
 }
 
-void rectangle::affiche()
+void rectangle::affiche(int color)
 {
-    rectfill(buf,p1.getx(),p1.gety(),p2.getx(),p2.gety(),makecol(255,0,0));
+    rectfill(buf,p1.getx(),p1.gety(),p2.getx(),p2.gety(),color);
 }

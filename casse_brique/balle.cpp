@@ -27,12 +27,19 @@ balle::balle(point pp1,float r,float ang):centre(pp1) {
     this->angle = ang;
 }
 
+balle::balle(){
+    this->rayon = 0;
+    this->angle = 0;
+    point* pp1 = new point(0,0);
+    this->centre = *pp1;
+}
+
 balle::~balle() {
 }
 
-void balle::affiche()
+void balle::affiche(int color)
 {
-    circlefill(buf,this->centre.getx(),this->centre.gety(),this->rayon,makecol(255,255,255));
+    circlefill(buf,this->centre.getx(),this->centre.gety(),this->rayon,color);
 }
 
 float balle::getx(){
@@ -85,8 +92,20 @@ void balle::collision_screen(){
 
 void balle::majdir(){
     this->angle = -(this->angle);
+    while (this->angle<0) {
+        this->angle += 2*M_PI;
+    }
+    while (this->angle>2*M_PI) {
+        this->angle -= 2*M_PI;
+    }
 }
 
 void balle::majdir2(){
-    this->angle = (this->angle)+30;
+    this->angle = -(this->angle)+M_PI;
+    while (this->angle<0) {
+        this->angle += 2*M_PI;
+    }
+    while (this->angle>2*M_PI) {
+        this->angle -= 2*M_PI;
+    }
 }

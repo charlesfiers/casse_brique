@@ -36,7 +36,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/balle.o \
+	${OBJECTDIR}/brique.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/mur.o \
 	${OBJECTDIR}/point.o \
 	${OBJECTDIR}/raquettes.o \
 	${OBJECTDIR}/rectangle.o
@@ -71,10 +73,20 @@ ${OBJECTDIR}/balle.o: balle.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/balle.o balle.cpp
 
+${OBJECTDIR}/brique.o: brique.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/brique.o brique.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/mur.o: mur.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mur.o mur.cpp
 
 ${OBJECTDIR}/point.o: point.cpp 
 	${MKDIR} -p ${OBJECTDIR}

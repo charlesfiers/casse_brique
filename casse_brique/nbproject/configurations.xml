@@ -5,6 +5,8 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>balle.h</itemPath>
+      <itemPath>brique.h</itemPath>
+      <itemPath>mur.h</itemPath>
       <itemPath>point.h</itemPath>
       <itemPath>raquettes.h</itemPath>
       <itemPath>rectangle.h</itemPath>
@@ -17,7 +19,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>balle.cpp</itemPath>
+      <itemPath>brique.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>mur.cpp</itemPath>
       <itemPath>point.cpp</itemPath>
       <itemPath>raquettes.cpp</itemPath>
       <itemPath>rectangle.cpp</itemPath>
@@ -53,7 +57,15 @@
       </item>
       <item path="balle.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="brique.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="brique.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mur.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mur.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="point.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -92,7 +104,15 @@
       </item>
       <item path="balle.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="brique.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="brique.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mur.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mur.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="point.cpp" ex="false" tool="1" flavor2="0">
       </item>

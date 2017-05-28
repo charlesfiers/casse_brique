@@ -14,9 +14,12 @@
 #include <allegro.h>
 
 #include "rectangle.h"
+#include "mur.h"
+#include "point.h"
 #include "raquettes.h"
 #include "balle.h"
 #include "../iostream"
+#include "math.h"
 
 BITMAP* buf;
 
@@ -55,6 +58,7 @@ void init_window()
 
 int main(){
     init_window();
+    mur* m = new mur();
     point* p1 = new point(250,20);
     point* p2 = new point(350,30);
     
@@ -66,16 +70,23 @@ int main(){
     raquettes* r1 = new raquettes(*p1,*p2);
     raquettes* r2 = new raquettes(*p3,*p4);
     
-    balle* b1 = new balle(*c,10,-30);
+    balle* b1 = new balle(*c,10,M_PI/3);
     do{
         clear_bitmap(buf);
-        r1->affiche();
-        r2->affiche();
-        b1->affiche();
+        int i=0;
+        r1->affiche(makecol(255,0,0));
+        r2->affiche(makecol(255,0,0));
+        b1->affiche(makecol(255,255,255));
         r1->deplacement();
         r2->deplacement();
         point* p = new point(r2->getp1().getx()+50,r2->getp2().gety()-20);
         b1->setcentre(*p);
+        while(i<30){
+            if (m->gettab(i)->getvisi()==true) {
+                m->gettab2(i).affiche(makecol(0,230,0));
+            }
+            i++;
+        }
         textout_centre_ex(buf,font, "Cliquez pour commencer", 300, 350,makecol(255,255,255),makecol(0,0,0));
         textout_centre_ex(buf,font, "ESC pour quitter", 300, 400,makecol(255,255,255),makecol(0,0,0));
         blit(buf,screen,0,0,0,0,buf->w,buf->h);
@@ -83,18 +94,26 @@ int main(){
     while(!(mouse_b & 1) && !(key[KEY_ESC]));
     
     do{
+        int i=0;
+        cout << m->nbvisi <<endl;
         clear_bitmap(buf);
-        r1->affiche();
-        r2->affiche();
-        b1->affiche();
+        r1->affiche(makecol(255,0,0));
+        r2->affiche(makecol(255,0,0));
+        while(i<30){
+            if (m->gettab(i)->getvisi()==true) {
+                m->gettab(i)->collision_mur(b1,m->gettab(i));
+                m->gettab2(i).affiche(makecol(0,240,0));
+            }
+            i++;
+        }
+        b1->affiche(makecol(255,255,255));
         blit(buf,screen,0,0,0,0,buf->w,buf->h);
         r1->deplacement();
         r2->deplacement();
         for(int i=1; i<=5;i++){
             b1->deplacement_balle();
-            if ((r1->collision(b1->getx(),b1->gety()-10)) || (r2->collision(b1->getx(),b1->gety()+10))) {
-                b1->majdir();
-            }
+            r1->collision1(b1);
+            r2->collision2(b1);           
             b1->collision_screen();
         }
     }

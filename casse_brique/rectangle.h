@@ -29,6 +29,6 @@ public:
     void init(rectangle);
     void collision(int, int);
     void casse();
-    virtual void affiche();
+    virtual void affiche(int);
 };
 

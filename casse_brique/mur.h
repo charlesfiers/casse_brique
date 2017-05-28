@@ -5,29 +5,29 @@
  */
 
 /* 
- * File:   raquettes.h
+ * File:   mur.h
  * Author: root
  *
- * Created on 27 mai 2017, 15:28
+ * Created on 28 mai 2017, 12:08
  */
 
 #pragma once
 
 #include "point.h"
+#include "mur.h"
+#include "brique.h"
 #include "balle.h"
 #include "rectangle.h"
 #include <allegro.h>
 
-class raquettes : public rectangle {
-    
+class mur{
 public:
-    raquettes(point,point);
-    virtual ~raquettes();
-    void deplacement();
-    void collision1(balle*);
-    void collision2(balle*);
-    point getp1();
-    point getp2();
+    mur();
+    int nbvisi;
+    brique* tab[30];  
+    virtual ~mur();
+    brique* gettab(int);
+    brique gettab2(int);   
 };
 
 

@@ -17,6 +17,8 @@
 #include "point.h"
 #include <allegro.h>
 #include "../iostream"
+#include "balle.h"
+#include "math.h"
 
 using namespace std;
 
@@ -37,17 +39,94 @@ void raquettes::deplacement(){
     this->p2.init(*pp);
 }
 
-bool raquettes::collision(float x1, float y1){
-    float xmax,xmin,ymax,ymin;
+void raquettes::collision1(balle* bal){
+    float xmax,xmin,ymax,ymin,x1,y1,xinter1,xinter2;
+    balle* b =new balle();
+    b = bal;
     xmin = this->p1.getx();
     xmax = this->p2.getx();
     ymin = this->p1.gety();
     ymax = this->p2.gety();
+    xinter1 = this->p1.getx()+25;
+    xinter2 = this->p2.getx()-25;
     
-    if ((x1<=xmax) && (x1>=xmin) && (y1<=ymax) && (y1>=ymin)) {
-        return true;
-    } else {
-        return false;
+    x1 = b->getx();
+    y1 = b->gety()-10;
+    
+    if (((x1<=xmax) && (x1>=xinter2)) && (y1<=ymax) && (y1>=ymin)) {
+        if (b->getangle()==M_PI/3) {
+            b->setangle(M_PI/4);
+        }
+        if (b->getangle()==2*M_PI/3) {
+            b->setangle(3*M_PI/4);
+        }
+        b->majdir();
+    }
+    
+    if (((x1>=xmin) && (x1<=xinter1)) && (y1<=ymax) && (y1>=ymin)) {
+        if (b->getangle()==M_PI/3) {
+            b->setangle(M_PI/4);
+        }
+        if (b->getangle()==2*M_PI/3) {
+            b->setangle(3*M_PI/4);
+        }
+        b->majdir();
+    }
+    
+    if ((x1>xinter1) && (x1<xinter2) && (y1<=ymax) && (y1>=ymin)) {
+        if (b->getangle()==M_PI/4) {
+            b->setangle(M_PI/3);
+        }
+        if (b->getangle()==3*M_PI/4) {
+            b->setangle(2*M_PI/3);
+        }
+        b->majdir();
+    }
+}
+
+void raquettes::collision2(balle* bal){
+    float xmax,xmin,ymax,ymin,x1,y1,xinter1,xinter2;
+    balle* b =new balle();
+    b = bal;
+    xmin = this->p1.getx();
+    xmax = this->p2.getx();
+    ymin = this->p1.gety();
+    ymax = this->p2.gety();
+    xinter1 = this->p1.getx()+25;
+    xinter2 = this->p2.getx()-25;
+    
+    x1 = b->getx();
+    y1 = b->gety()+10;
+    
+    
+    if (((x1<=xmax) && (x1>=xinter2)) && (y1<=ymax) && (y1>=ymin)) {
+        if (b->getangle()==5*M_PI/3) {
+            b->setangle(7*M_PI/4);
+        }
+        if (b->getangle()==4*M_PI/3) {
+            b->setangle(5*M_PI/4);
+        }
+        b->majdir();
+    }
+    
+    if (((x1>=xmin) && (x1<=xinter1)) && (y1<=ymax) && (y1>=ymin)) {
+        if (b->getangle()==5*M_PI/3) {
+            b->setangle(7*M_PI/4);
+        }
+        if (b->getangle()==4*M_PI/3) {
+            b->setangle(5*M_PI/4);
+        }
+        b->majdir();
+    }
+    
+    if ((x1>xinter1) && (x1<xinter2) && (y1<=ymax) && (y1>=ymin)) {
+        if (b->getangle()==5*M_PI/4) {
+            b->setangle(2*M_PI/3);
+        }
+        if (b->getangle()==7*M_PI/4) {
+            b->setangle(M_PI/3);
+        }
+        b->majdir();
     }
 }
 

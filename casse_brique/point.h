@@ -28,6 +28,7 @@ point(float,float);
 ~point();
 void affiche();
 void init(point);
+void init(float,float);
 void deplace(float,float);
 void homothetie(float);
 void rotation(float);

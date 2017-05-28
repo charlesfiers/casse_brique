@@ -43,6 +43,12 @@ void point::init(point p1)
     y = p1.gety();
 }
 
+void point::init(float x1,float y1)
+{
+    x = x1;
+    y = y1;
+}
+
 void point::affiche(){
 cout << "(" << x << ", " << y << ")";
 cout << "(" << rho << ", " << theta << ")";

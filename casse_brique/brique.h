@@ -5,29 +5,29 @@
  */
 
 /* 
- * File:   raquettes.h
+ * File:   brique.h
  * Author: root
  *
- * Created on 27 mai 2017, 15:28
+ * Created on 28 mai 2017, 11:58
  */
 
 #pragma once
 
 #include "point.h"
+#include "brique.h"
 #include "balle.h"
 #include "rectangle.h"
 #include <allegro.h>
 
-class raquettes : public rectangle {
-    
-public:
-    raquettes(point,point);
-    virtual ~raquettes();
-    void deplacement();
-    void collision1(balle*);
-    void collision2(balle*);
-    point getp1();
-    point getp2();
-};
 
+class brique : public rectangle {
+protected:
+    bool visi;
+public:
+    brique(point,point);
+    virtual ~brique();
+    bool getvisi();
+    void setvisi(bool);
+    void collision_mur(balle*,brique*);
+};
 
