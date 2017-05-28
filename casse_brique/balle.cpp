@@ -39,7 +39,7 @@ balle::~balle() {
 
 void balle::affiche(int color)
 {
-    circlefill(buf,this->centre.getx(),this->centre.gety(),this->rayon,color);
+    circle(buf,this->centre.getx(),this->centre.gety(),this->rayon,color);
 }
 
 float balle::getx(){

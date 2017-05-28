@@ -95,7 +95,6 @@ int main(){
     
     do{
         int i=0;
-        cout << m->nbvisi <<endl;
         clear_bitmap(buf);
         r1->affiche(makecol(255,0,0));
         r2->affiche(makecol(255,0,0));
@@ -110,16 +109,14 @@ int main(){
         blit(buf,screen,0,0,0,0,buf->w,buf->h);
         r1->deplacement();
         r2->deplacement();
-        for(int i=1; i<=5;i++){
+        for(int i=1; i<=10;i++){
             b1->deplacement_balle();
             r1->collision1(b1);
             r2->collision2(b1);           
             b1->collision_screen();
         }
     }
-    while(!key[KEY_ESC] && m->nbvisi!=0);
-    textout_centre_ex(buf,font, "YOU WIN", 300, 400,makecol(255,255,255),makecol(0,0,0));
-    blit(buf,screen,0,0,0,0,buf->w,buf->h);    
+    while((!key[KEY_ESC]) && (m->nbvisi!=0)); 
     
     
     destroy_bitmap(buf);

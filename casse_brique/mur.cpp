@@ -33,8 +33,8 @@ mur::mur() {
             pos_x = 40;
             pos_y += 35;
         }
-        int rnd = rand() % 15;
-        if (rnd != 0) {
+        int rnd = rand() % 5;
+        if (rnd == 0) {
             tab[i]->setvisi(false);
         } else {
             tab[i]->setvisi(true);
