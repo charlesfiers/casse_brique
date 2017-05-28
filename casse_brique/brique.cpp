@@ -20,6 +20,7 @@
 
 using namespace std;
 
+
 brique::brique(point pp1, point pp2):rectangle(pp1,pp2) {
 }
 
@@ -34,7 +35,7 @@ bool brique::getvisi(){
     return visi;
 }
 
-void brique::collision_mur(balle* b1, brique* br){
+int brique::collision_mur(balle* b1, brique* br,int n){
     float x1,y1,x2,y2,x3,y3,x4,y4,xmax,xmin,ymax,ymin;
     
     xmin = this->p1.getx();
@@ -67,22 +68,27 @@ void brique::collision_mur(balle* b1, brique* br){
         cout << "Colision 1" << endl;
         cout << "Avant" <<  this->getvisi() << endl;
         brik->setvisi(false);
+        n--;
         cout << "Après" <<  this->getvisi() << endl;
         b->majdir();
     }
     if ((x2<=xmax) && (x2>=xmin) && (y2>=ymin) && (y2<=ymax)) {
         cout << "Colision 2" << endl;
         brik->setvisi(false);
+        n--;
         b->majdir();
     }
     if ((x3<=xmax) && (x3>=xmin) && (y3>=ymin) && (y3<=ymax)) {
         cout << "Colision 3" << endl;
         brik->setvisi(false);
+        n--;
         b->majdir2();
     }
     if ((x4<=xmax) && (x4>=xmin) && (y4>=ymin) && (y4<=ymax)) {
         cout << "Colision 4" << endl;
         brik->setvisi(false);
+        n--;
         b->majdir2();
     }
+    return n;
 }

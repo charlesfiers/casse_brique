@@ -101,7 +101,7 @@ int main(){
         r2->affiche(makecol(255,0,0));
         while(i<30){
             if (m->gettab(i)->getvisi()==true) {
-                m->gettab(i)->collision_mur(b1,m->gettab(i));
+                m->nbvisi = m->gettab(i)->collision_mur(b1,m->gettab(i),m->nbvisi);
                 m->gettab2(i).affiche(makecol(0,240,0));
             }
             i++;
@@ -117,7 +117,10 @@ int main(){
             b1->collision_screen();
         }
     }
-    while(!key[KEY_ESC]);
+    while(!key[KEY_ESC] && m->nbvisi!=0);
+    textout_centre_ex(buf,font, "YOU WIN", 300, 400,makecol(255,255,255),makecol(0,0,0));
+    blit(buf,screen,0,0,0,0,buf->w,buf->h);    
+    
     
     destroy_bitmap(buf);
     set_gfx_mode(GFX_TEXT,0,0,0,0);

@@ -28,6 +28,6 @@ public:
     virtual ~brique();
     bool getvisi();
     void setvisi(bool);
-    void collision_mur(balle*,brique*);
+    int collision_mur(balle*,brique*,int);
 };
 
